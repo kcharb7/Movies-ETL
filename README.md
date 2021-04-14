@@ -458,7 +458,7 @@ ratings['rating'].plot(kind='hist')
 ratings['rating'].describe()
 ```
 
-![histogram.png]()
+![histogram.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/histogram.png)
 
 All ratings were between 0 and 5, with a median of 3.5 and a mean of 3.53. 
 
@@ -491,7 +491,7 @@ Next looking at the “running_time” and “runtime” columns, I created a sc
 movies_df.fillna(0).plot(x='running_time', y='runtime', kind='scatter')
 ```
 
-![scatter.png]()
+![scatter.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/scatter.png)
 
 More data points were located on the origin of the y-axis than the x-axis, with the x-axis as Wikipedia and the y-axis as Kaggle. Thus, there was more missing entries in the Wikipedia data set than in the Kaggle data set. Furthermore, the Wikipedia data set appeared to have some outliers, making Kaggle data better for use. However, the Kaggle data contained some zeros for the runtime of some movies while Wikipedia data had values, thus, the Wikipedia data was used to fill in zeroes within the Kaggle dataset. 
 
@@ -500,7 +500,7 @@ I created another scatterplot of the budget_wiki and budget_kaggle columns:
 movies_df.fillna(0).plot(x='budget_wiki',y='budget_kaggle', kind='scatter')
 ```
 
-![scatter2.png]
+![scatter2.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/scatter2.png)
 
 The Wikipedia data contained more outliers than the Kaggle data; though, the Kaggle data had more movies with no budget data. Thus, the Kaggle was kept, and the Wikipedia data was used to fill in any gaps.
 
@@ -509,14 +509,14 @@ A third scatter plot was made of the “box_office” and “revenue” columns:
 movies_df.fillna(0).plot(x='box_office', y='revenue', kind='scatter')
 ```
 
-![scatter3.png]
+![scatter3.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/scatter3.png)
 
 The data plots looked pretty close, however, the large outlier may have thrown off the scale. So, I created another scatter plot for values less than $1 billion in “box_office”:
 ```
 movies_df.fillna(0)[movies_df['box_office'] < 10**9].plot(x='box_office', y='revenue', kind='scatter')
 ```
 
-![scatter4.png]
+![scatter4.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/scatter4.png)
 
 The scatter plot looked similar to that seen for budget. Consequently, the Kaggle data was kept and any zeroes were filled with Wikipedia data.
 
@@ -525,7 +525,7 @@ To compare the “release_data_wiki” and “release_date_kaggle” columns, I 
 movies_df[['release_date_wiki','release_date_kaggle']].plot(x='release_date_wiki', y='release_date_kaggle', style='.')
 ```
 
-![line.png]()
+![line.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/line.png)
 
 One substantial outlier was found around 2006. To look more closely at this movie, I searched for any movie in the DataFrame with a release date after 1996 according to Wikipedia and before 1965 according to Kaggle:
 ```
@@ -1160,7 +1160,7 @@ SELECT COUNT(*) FROM movies
 
 ```
 
-![movies_query.png]()
+![movies_query.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/movies_query.png)
 
 This confirmed that the movies table contained 6,052 rows. 
 
@@ -1169,6 +1169,6 @@ I refactored this code to ensure all of the rows for the ratings table were impo
 SELECT COUNT(*) FROM ratings
 ```
 
-![ratings_query.png]()
+![ratings_query.png](https://github.com/kcharb7/Movies-ETL/blob/main/Resources/ratings_query.png)
 
 The ratings table contained 26,024,289 rows. 
