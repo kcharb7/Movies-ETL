@@ -3,6 +3,10 @@
 ### *Purpose*
 AMAZING PRIME, the world’s largest retailer, provides streaming services for movies and tv shows through AMAZING PRIME Video. The AMAZING PRIME Video team wanted to develop an algorithm that predicted which low-budget movies being released would become popular so they could buy the streaming rights at a bargain. So, AMAZING PRIME planned to sponsor a hackathon for participants to predict the most popular movies and needed to create a clean dataset of all the movie data, including scraped Wikipedia data of all movies released since 1990 and rating data from MovieLens through Kaggle. 
 
+## Resources
+-   Data Source: wikipedia-movies.json, movies_metadata.csv, ratings.csv
+-	Software: Python 3.6.1, Jupyter Notebook 6.2.0, PostgreSQL 13, pgAdmin 4
+
 
 ## Extract the Data
 ### *Extract the Wikipedia Data*
