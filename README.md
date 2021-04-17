@@ -354,8 +354,8 @@ release_date = wiki_movies_df['Release date'].dropna().apply(lambda x: ' '.join(
 ```
 Then, I created regular expressions to capture four different forms: full month name, one- to two-digit day, four-digit year (i.e., April 11, 2021); four-digit year, two-digit month, two-digit day, with any separator (i.e., 2021-04-11); full month name, four-digit year (i.e., April 2021); and four-digit year:
 ```
-date_form_one = r'(?:January|February|March|April|May|June|July|August|September|October|November|December)\s[123]\d,\s\d{4}'
-date_form_two = r'\d{4}.[01]\d.[123]\d'
+date_form_one = r'(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2},\s\d{4}'
+date_form_two = r'\d{4}.[01]\d.[0123]\d'
 date_form_three = r'(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{4}'
 date_form_four = r'\d{4}'
 ```
@@ -427,7 +427,7 @@ kaggle_metadata['video'].value_counts()
 ```
 The output indicated the only values were “True” or “False”. So, I converted the “video” column using the following code:
 ```
-kaggle_metadata['video'] = kaggle_metadata['video'] == 'True'
+kaggle_metadata['video'] = kaggle_metadata['video'] == True
 ```
 For the columns that needed to be converted to a numeric data type, I used the to_numeric() method from Pandas and set the “errors=” argument to “raise” to identify any data that couldn’t be converted to numbers:
 ```
@@ -944,8 +944,8 @@ I added the code to clean the “budget”, “release_date”, and “running_t
     # 15. Clean the release date column in the wiki_movies_df DataFrame.
     release_date = wiki_movies_df['Release date'].dropna().apply(lambda x: ' '.join(x) if type(x) == list else x)
 
-    date_form_one = r'(?:January|February|March|April|May|June|July|August|September|October|November|December)\s[123]\d,\s\d{4}'
-    date_form_two = r'\d{4}.[01]\d.[123]\d'
+    date_form_one = r'(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2},\s\d{4}'
+    date_form_two = r'\d{4}.[01]\d.[0123]\d'
     date_form_three = r'(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{4}'
     date_form_four = r'\d{4}'
     
@@ -1000,7 +1000,7 @@ After adding the function from the ETL_clean_wiki_movies.ipynb file to the ETL_c
     # 2. Clean the Kaggle metadata.
     kaggle_metadata = kaggle_metadata[kaggle_metadata['adult'] == 'False'].drop('adult',axis='columns')
 
-    kaggle_metadata['video'] = kaggle_metadata['video'] == 'True'
+    kaggle_metadata['video'] = kaggle_metadata['video'] == True
     
     kaggle_metadata['budget'] = kaggle_metadata['budget'].astype(int)
     kaggle_metadata['id'] = pd.to_numeric(kaggle_metadata['id'], errors='raise')
